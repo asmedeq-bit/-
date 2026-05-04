@@ -43,10 +43,31 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);fon
 #content{flex:1;overflow-y:auto;padding:20px 24px}
 .btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;transition:all .2s;white-space:nowrap}
 .btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-dark);box-shadow:0 4px 12px rgba(26,86,219,.3)}
+.btn-success{background:var(--success);color:#fff}.btn-success:hover{background:#059669;box-shadow:0 4px 12px rgba(16,185,129,.35)}
 .btn-danger{background:var(--danger);color:#fff}.btn-danger:hover{background:#dc2626}
 .btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}.btn-outline:hover{background:var(--primary-light)}
 .btn-ghost{background:transparent;color:var(--text-muted);border:1.5px solid var(--border)}.btn-ghost:hover{background:var(--bg);color:var(--text)}
 .btn-sm{padding:5px 11px;font-size:12px;border-radius:6px}.btn-icon{padding:7px;min-width:auto}
+
+/* Quick-add card บน Dashboard */
+.quick-actions{
+  background:linear-gradient(135deg,#10b981 0%,#059669 100%);
+  border-radius:var(--radius);padding:18px 22px;margin-bottom:18px;
+  display:flex;align-items:center;gap:18px;color:#fff;box-shadow:0 6px 18px rgba(16,185,129,.25);
+  position:relative;overflow:hidden;
+}
+.quick-actions::before{content:'';position:absolute;right:-30px;top:-30px;width:140px;height:140px;background:rgba(255,255,255,.08);border-radius:50%}
+.quick-actions::after{content:'';position:absolute;right:60px;bottom:-40px;width:90px;height:90px;background:rgba(255,255,255,.06);border-radius:50%}
+.qa-icon{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;z-index:1}
+.qa-text{flex:1;z-index:1}
+.qa-title{font-size:16px;font-weight:700;margin-bottom:2px}
+.qa-sub{font-size:12px;opacity:.85}
+.qa-actions{display:flex;gap:10px;z-index:1;flex-wrap:wrap}
+.qa-btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:8px;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;background:#fff;color:#059669;transition:all .2s;white-space:nowrap}
+.qa-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.qa-btn.outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+.qa-btn.outline:hover{background:rgba(255,255,255,.15);border-color:#fff}
+
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:20px}
 .stat-card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:14px;border:1px solid var(--border);cursor:pointer;transition:all .2s}
 .stat-card:hover{border-color:var(--primary);box-shadow:0 6px 20px rgba(26,86,219,.13);transform:translateY(-2px)}
@@ -196,7 +217,25 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
 .empty-state i{font-size:48px;opacity:.4;margin-bottom:16px}
 .empty-state h3{font-size:18px;color:var(--text);margin-bottom:8px;font-weight:700}
 .empty-state p{font-size:13px;line-height:1.6;max-width:480px;margin:0 auto 16px}
-.empty-state code{background:var(--bg);padding:2px 8px;border-radius:4px;font-size:12px;color:var(--primary)}
+
+/* Picker modal */
+.picker-radio-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;max-height:400px;overflow-y:auto;padding:4px}
+.picker-radio-list::-webkit-scrollbar{width:5px}.picker-radio-list::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+.picker-item{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all .15s;background:var(--bg)}
+.picker-item:hover{border-color:var(--primary);background:var(--primary-light)}
+.picker-item.selected{border-color:var(--primary);background:var(--primary);color:#fff;box-shadow:0 4px 12px rgba(26,86,219,.25)}
+.picker-item.selected .pi-count{background:rgba(255,255,255,.25);color:#fff}
+.picker-item input{display:none}
+.pi-icon{width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.picker-item.selected .pi-icon{background:rgba(255,255,255,.25);color:#fff}
+.pi-name{flex:1;font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pi-count{font-size:11px;font-weight:700;background:rgba(0,0,0,.06);padding:2px 8px;border-radius:10px;flex-shrink:0}
+.picker-search{display:flex;align-items:center;gap:8px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;margin-bottom:12px}
+.picker-search input{border:none;background:transparent;outline:none;font-family:inherit;font-size:13px;flex:1}
+.picker-divider{margin:14px 0;height:1px;background:var(--border);position:relative}
+.picker-divider span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--card);padding:0 12px;font-size:11px;color:var(--text-muted)}
+.new-cat-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;width:100%;border:1.5px dashed var(--border);background:transparent;border-radius:10px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-muted);transition:all .15s}
+.new-cat-btn:hover{border-color:var(--success);color:var(--success);background:#ecfdf5}
 </style>
 </head>
 <body>
@@ -236,22 +275,24 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
         <span class="page-subtitle" id="page-subtitle">ภาพรวมรายการพัสดุทั้งหมด</span>
       </div>
       <button class="btn btn-ghost btn-sm" onclick="refreshData()"><i class="fas fa-sync-alt"></i> รีเฟรช</button>
-      <button class="btn btn-primary" onclick="openAddModal()" id="btn-add" style="display:none"><i class="fas fa-plus"></i> เพิ่มรายการ</button>
+      <button class="btn btn-primary" onclick="topbarAdd()" id="btn-add"><i class="fas fa-plus"></i> เพิ่มเครื่องมือใหม่</button>
     </div>
 
     <div id="content">
       <div id="view-dashboard">
-        <div id="empty-categories" style="display:none">
-          <div class="empty-state">
-            <i class="fas fa-database"></i>
-            <h3>ยังไม่มีข้อมูลในฐานข้อมูล</h3>
-            <p>เริ่มต้นได้โดย: <br>
-            1) นำเข้าข้อมูลจาก Excel ผ่านสคริปต์ <code>import_xlsx.py</code> (ดู README) <br>
-            2) หรือเพิ่ม category ใหม่จาก Supabase Dashboard <br>
-            3) หรือสร้างประเภทพัสดุใหม่จากปุ่มด้านล่าง</p>
-            <button class="btn btn-primary" onclick="createCategoryPrompt()"><i class="fas fa-plus"></i> สร้างประเภทพัสดุใหม่</button>
+        <!-- Quick action: เพิ่มเครื่องมือใหม่ -->
+        <div class="quick-actions">
+          <div class="qa-icon"><i class="fas fa-plus-circle"></i></div>
+          <div class="qa-text">
+            <div class="qa-title">เพิ่มเครื่องมือใหม่ที่ยังไม่เคยมีในรายการ</div>
+            <div class="qa-sub">เลือกประเภทพัสดุ → กรอกรายละเอียด → บันทึก เสร็จในไม่กี่คลิก</div>
+          </div>
+          <div class="qa-actions">
+            <button class="qa-btn" onclick="openCategoryPicker()"><i class="fas fa-plus"></i> เพิ่มเครื่องมือ</button>
+            <button class="qa-btn outline" onclick="openCreateCategory()"><i class="fas fa-folder-plus"></i> สร้างประเภทใหม่</button>
           </div>
         </div>
+
         <div id="dash-content">
           <div class="stat-grid" id="stat-grid"></div>
           <div class="chart-grid">
@@ -270,6 +311,14 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
           <div class="chart-card" style="margin-bottom:16px">
             <div class="chart-title"><i class="fas fa-th-large" style="color:var(--info)"></i> รายการพัสดุทั้งหมด <span style="font-size:12px;color:var(--text-muted);font-weight:400;margin-left:6px">คลิกเพื่อดูรายการ</span></div>
             <div class="sheet-grid" id="sheet-grid"></div>
+          </div>
+        </div>
+
+        <div id="empty-categories" style="display:none">
+          <div class="empty-state">
+            <i class="fas fa-database"></i>
+            <h3>ยังไม่มีข้อมูลในฐานข้อมูล</h3>
+            <p>เริ่มต้นได้โดย import จาก xlsx (ใช้ <code>import_xlsx.py</code>) หรือกดปุ่ม "สร้างประเภทใหม่" ด้านบน</p>
           </div>
         </div>
       </div>
@@ -320,6 +369,59 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
   </div>
 </div>
 
+<!-- Category picker modal -->
+<div class="modal-overlay" id="picker-overlay">
+  <div class="modal" style="max-width:680px">
+    <div class="modal-header">
+      <h2><i class="fas fa-folder-open" style="color:var(--success)"></i> เลือกประเภทพัสดุที่จะเพิ่ม</h2>
+      <button class="modal-close" onclick="closeCategoryPicker()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="picker-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="picker-search-input" placeholder="ค้นหาประเภท..." oninput="filterPicker()">
+      </div>
+      <div class="picker-radio-list" id="picker-list"></div>
+      <div class="picker-divider"><span>หรือ</span></div>
+      <button class="new-cat-btn" onclick="openCreateCategory()">
+        <i class="fas fa-folder-plus"></i> สร้างประเภทพัสดุใหม่
+      </button>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeCategoryPicker()">ยกเลิก</button>
+      <button class="btn btn-success" onclick="confirmCategoryPicker()" id="picker-confirm-btn" disabled style="opacity:.5"><i class="fas fa-arrow-right"></i> ถัดไป — กรอกรายละเอียด</button>
+    </div>
+  </div>
+</div>
+
+<!-- Create category modal -->
+<div class="modal-overlay" id="newcat-overlay">
+  <div class="modal" style="max-width:600px">
+    <div class="modal-header">
+      <h2><i class="fas fa-folder-plus" style="color:var(--success)"></i> สร้างประเภทพัสดุใหม่</h2>
+      <button class="modal-close" onclick="closeCreateCategory()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group full" style="margin-bottom:14px">
+        <label class="form-label">ชื่อประเภทพัสดุ <span style="color:var(--danger)">*</span></label>
+        <input type="text" class="plain-input" id="newcat-name" placeholder="เช่น เครื่องช่วยหายใจ, เครื่องดูดเสมหะ">
+      </div>
+      <div class="form-group full">
+        <label class="form-label">คอลัมน์ทั้งหมด (คั่นด้วย <code>|</code>) <span style="color:var(--danger)">*</span></label>
+        <textarea class="plain-input" id="newcat-cols" rows="3" placeholder="ลำดับ|รายการ|รุ่น|S/N|จำนวน|หน่วยนับ|สถานะ|ใช้ที่แผนก">ลำดับ|รายการ|รุ่น|S/N|จำนวน|หน่วยนับ|สถานะ|ใช้ที่แผนก|หมายเหตุ</textarea>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;line-height:1.5">
+          แนะนำให้มี: <strong>ลำดับ</strong>, <strong>รายการ</strong> (ชื่อเครื่อง), <strong>สถานะ</strong> (สำหรับ filter), <strong>ใช้ที่แผนก</strong>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeCreateCategory()">ยกเลิก</button>
+      <button class="btn btn-success" onclick="confirmCreateCategory()"><i class="fas fa-check"></i> สร้างและเพิ่มเครื่องมือ</button>
+    </div>
+  </div>
+</div>
+
+<!-- Status drill-down modal -->
 <div id="status-overlay">
   <div id="status-modal">
     <div class="sm-header">
@@ -354,6 +456,7 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
   </div>
 </div>
 
+<!-- Edit/Add modal -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal">
     <div class="modal-header">
@@ -368,6 +471,7 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
   </div>
 </div>
 
+<!-- Delete modal -->
 <div class="modal-overlay" id="del-overlay">
   <div class="modal" style="max-width:420px">
     <div class="modal-header">
@@ -386,27 +490,17 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
 </div>
 
 <script>
-// =============================================
-// SUPABASE CONFIG  ← แก้ที่นี่ถ้าย้ายโครงการ
-// =============================================
 const SUPABASE_URL = 'https://mzbkmwgkpjagxwamnibg.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_7uPDHkXlXkyHxahPqhq5AA_3wBoQVjy';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// =============================================
-// STATE
-// =============================================
 const S = {
-  categories: [],            // [{id, name, headers:[...]}]
-  currentCat: null,          // {id, name, headers}
-  currentNavIdx: null,
-  allItems: {},              // catId -> [{id, row_index, data, status, department}]
-  filteredRows: [],
-  currentPage: 1, pageSize: 50,
+  categories: [], currentCat: null, currentNavIdx: null,
+  allItems: {}, filteredRows: [], currentPage: 1, pageSize: 50,
   sortCol: null, sortDir: 'asc',
   editItemId: null, delItemId: null,
-  dashStats: null, activeDD: null,
-  searchMode: 'contains'
+  dashStats: null, activeDD: null, searchMode: 'contains',
+  pickerSelectedId: null
 };
 
 const COLORS = ['#2563eb','#10b981','#f59e0b','#ef4444','#8b5cf6','#06b6d4','#f97316','#ec4899','#14b8a6','#6366f1','#84cc16','#a855f7'];
@@ -428,20 +522,13 @@ const STATIC_DROPDOWNS = {
 
 function isStatusCol(h){ return h==='สถานะภาพพัสดุ'||h==='สถานะ'||h.includes('สถานะภาพ')||h.includes('สถานะ'); }
 function isDeptCol(h){ return h.includes('ใช้ที่แผนก'); }
-function normalizeStatus(v){
-  v=String(v||'').trim().replace(/\s+$/,'');
-  if(v==='ใช้งานได้'||v==='ปกติ')return 'ใช้ราชการได้';
-  return v;
-}
+function normalizeStatus(v){ v=String(v||'').trim().replace(/\s+$/,''); if(v==='ใช้งานได้'||v==='ปกติ')return 'ใช้ราชการได้'; return v; }
 function rowToArr(item, headers){ return headers.map(h => (item.data && item.data[h] !== undefined && item.data[h] !== null) ? String(item.data[h]) : ''); }
 function arrToObj(arr, headers){ const o={}; headers.forEach((h,i)=>{ o[h] = arr[i] === undefined ? '' : arr[i]; }); return o; }
 
 window.addEventListener('load', init);
 document.addEventListener('click', e => { if(S.activeDD && !S.activeDD.contains(e.target)) closeAllDD(); });
 
-// =============================================
-// INIT
-// =============================================
 async function init(){
   showLoading(true);
   try {
@@ -473,13 +560,15 @@ function buildSidebarNav(){
 }
 function setActiveNav(id){ document.querySelectorAll('.nav-item').forEach(el=>el.classList.remove('active')); const el=document.getElementById(id); if(el)el.classList.add('active'); }
 
-// =============================================
-// DASHBOARD
-// =============================================
+// Topbar add button — เลือก behavior ตาม view
+function topbarAdd(){
+  if(S.currentCat) openAddModal();
+  else openCategoryPicker();
+}
+
 async function showDashboard(){
   document.getElementById('view-dashboard').style.display='';
   document.getElementById('view-table').style.display='none';
-  document.getElementById('btn-add').style.display='none';
   document.getElementById('page-title').textContent='Dashboard';
   document.getElementById('page-subtitle').textContent='ภาพรวมรายการพัสดุทั้งหมด';
   S.currentCat=null; setActiveNav('nav-dashboard');
@@ -500,11 +589,7 @@ async function loadDashboard(){
       else statusSummary[r.status] = Number(r.cnt)||0;
     });
     const totalItems = sheetStats.reduce((s,x)=>s+x.count,0);
-    const stats = {
-      totalSheets: sheetStats.filter(s=>s.count>0).length,
-      totalItems, sheetStats, statusSummary, noStatusCount,
-      _grandTotal: totalItems
-    };
+    const stats = { totalSheets: sheetStats.filter(s=>s.count>0).length, totalItems, sheetStats, statusSummary, noStatusCount, _grandTotal: totalItems };
     S.dashStats = stats;
     renderDashboard(stats);
     showLoading(false);
@@ -515,8 +600,7 @@ async function loadDashboard(){
 }
 
 function renderDashboard(st){
-  const grandTotal = st.totalItems||0;
-  const noStatus = st.noStatusCount||0;
+  const grandTotal = st.totalItems||0, noStatus = st.noStatusCount||0;
   const useRach = (st.statusSummary['ใช้ราชการได้'])||0;
   const DISPOSED = ['จำหน่าย','จำหน่ายแล้ว','ในระบบจำหน่ายแล้ว'];
   const disposed = DISPOSED.reduce((s,k)=>s+(st.statusSummary[k]||0),0);
@@ -525,8 +609,7 @@ function renderDashboard(st){
     <div class="stat-card" onclick="openSheetListModal()" title="ดูรายการทุกประเภทพัสดุ">
       <div class="stat-icon blue"><i class="fas fa-layer-group"></i></div>
       <div class="stat-info">
-        <div class="stat-label">ประเภทพัสดุ</div>
-        <div class="stat-value">${st.totalSheets}</div>
+        <div class="stat-label">ประเภทพัสดุ</div><div class="stat-value">${st.totalSheets}</div>
         <div class="stat-sub">ชีทข้อมูล</div>
         <div class="stat-hint"><i class="fas fa-mouse-pointer"></i> คลิกดูทุกประเภท</div>
       </div>
@@ -534,8 +617,7 @@ function renderDashboard(st){
     <div class="stat-card" onclick="openAllItemsModal()" title="ดูรายการพัสดุทั้งหมด">
       <div class="stat-icon green"><i class="fas fa-boxes"></i></div>
       <div class="stat-info">
-        <div class="stat-label">รายการทั้งหมด</div>
-        <div class="stat-value">${grandTotal.toLocaleString()}</div>
+        <div class="stat-label">รายการทั้งหมด</div><div class="stat-value">${grandTotal.toLocaleString()}</div>
         <div class="stat-sub">พัสดุที่ระบุสถานะ ${noStatus>0?`<span onclick="event.stopPropagation();openNoStatusModal()" style="color:var(--warning);font-size:10px;cursor:pointer;text-decoration:underline"> | ไม่ระบุสถานะ ${noStatus.toLocaleString()} รายการ →</span>`:''}</div>
         <div class="stat-hint"><i class="fas fa-mouse-pointer"></i> คลิกดูทั้งหมด</div>
       </div>
@@ -543,8 +625,7 @@ function renderDashboard(st){
     <div class="stat-card" onclick="openStatusModal('ใช้ราชการได้','#10b981')" title="ดูรายการที่ใช้ราชการได้">
       <div class="stat-icon orange"><i class="fas fa-check-circle"></i></div>
       <div class="stat-info">
-        <div class="stat-label">ใช้ราชการได้</div>
-        <div class="stat-value">${useRach.toLocaleString()}</div>
+        <div class="stat-label">ใช้ราชการได้</div><div class="stat-value">${useRach.toLocaleString()}</div>
         <div class="stat-sub">รายการ</div>
         <div class="stat-hint"><i class="fas fa-mouse-pointer"></i> คลิกดูรายการ</div>
       </div>
@@ -552,8 +633,7 @@ function renderDashboard(st){
     <div class="stat-card" onclick="openMultiStatusModal(['จำหน่าย','จำหน่ายแล้ว'],'จำหน่ายแล้ว','#6366f1')" title="ดูรายการที่จำหน่ายแล้ว">
       <div class="stat-icon purple"><i class="fas fa-archive"></i></div>
       <div class="stat-info">
-        <div class="stat-label">จำหน่ายแล้ว</div>
-        <div class="stat-value">${disposed.toLocaleString()}</div>
+        <div class="stat-label">จำหน่ายแล้ว</div><div class="stat-value">${disposed.toLocaleString()}</div>
         <div class="stat-sub">รายการ</div>
         <div class="stat-hint"><i class="fas fa-mouse-pointer"></i> คลิกดูรายการ</div>
       </div>
@@ -583,8 +663,7 @@ function renderDonut(sm){
   const total = mainEntries.reduce((s,[,v])=>s+v,0);
   const svg = document.getElementById('donut-svg');
   if(!total){ svg.innerHTML=''; document.getElementById('donut-legend').innerHTML='<div style="color:var(--text-muted);font-size:12px">ยังไม่มีข้อมูล</div>'; return; }
-  const [cx,cy,r,inn]=[70,70,55,35];
-  let start=-Math.PI/2, paths='';
+  const [cx,cy,r,inn]=[70,70,55,35]; let start=-Math.PI/2, paths='';
   mainEntries.forEach(([label,val],i)=>{
     const angle=val/total*Math.PI*2, end=start+angle;
     const[x1,y1,x2,y2]=[cx+r*Math.cos(start),cy+r*Math.sin(start),cx+r*Math.cos(end),cy+r*Math.sin(end)];
@@ -604,9 +683,6 @@ function renderDonut(sm){
     </div>`).join('');
 }
 
-// =============================================
-// CATEGORY (sheet) VIEW
-// =============================================
 function showCategoryById(catId){
   const idx = S.categories.findIndex(c => c.id === catId);
   if(idx >= 0) showCategory(catId, idx);
@@ -618,7 +694,6 @@ async function showCategory(catId, navIdx){
   S.currentCat = cat; S.currentNavIdx = navIdx;
   document.getElementById('view-dashboard').style.display='none';
   document.getElementById('view-table').style.display='';
-  document.getElementById('btn-add').style.display='';
   document.getElementById('page-title').textContent = cat.name;
   document.getElementById('page-subtitle').textContent = 'รายการพัสดุ: ' + cat.name;
   document.getElementById('table-title').textContent = cat.name;
@@ -649,15 +724,13 @@ function renderTable(cat){
     return;
   }
   S.currentPage = 1; S.sortCol = null;
-  buildFilters(cat);
-  applyFilters();
+  buildFilters(cat); applyFilters();
 }
 
 function buildFilters(cat){
   const items = S.allItems[cat.id] || [];
   const headers = cat.headers || [];
-  const sk = headers.findIndex(isStatusCol);
-  const dk = headers.findIndex(isDeptCol);
+  const sk = headers.findIndex(isStatusCol), dk = headers.findIndex(isDeptCol);
   const statusSet = new Set(), deptSet = new Set();
   items.forEach(it => {
     if(sk >= 0){ const v = normalizeStatus(it.data?.[headers[sk]]); if(v) statusSet.add(v); }
@@ -676,16 +749,12 @@ function applyFilters(){
   document.getElementById('btn-clear-search').style.display = q ? '' : 'none';
   const st = document.getElementById('status-filter').value;
   const dp = document.getElementById('dept-filter').value;
-  const sk = headers.findIndex(isStatusCol);
-  const dk = headers.findIndex(isDeptCol);
+  const sk = headers.findIndex(isStatusCol), dk = headers.findIndex(isDeptCol);
 
   S.filteredRows = items.filter(it => {
     if(st && sk >= 0 && normalizeStatus(it.data?.[headers[sk]]) !== st) return false;
     if(dp && dk >= 0 && String(it.data?.[headers[dk]]||'').trim() !== dp) return false;
-    if(q){
-      const arr = rowToArr(it, headers);
-      return arr.some(v => matchSearch(String(v||'').toLowerCase(), q));
-    }
+    if(q){ const arr = rowToArr(it, headers); return arr.some(v => matchSearch(String(v||'').toLowerCase(), q)); }
     return true;
   });
 
@@ -763,22 +832,9 @@ function renderPagination(pages){
     `<div class="page-btn ${cp>=pages?'dis':''}" onclick="goPage(${cp+1})"><i class="fas fa-chevron-right"></i></div>`;
 }
 
-function goPage(p){
-  const pages = Math.ceil(S.filteredRows.length/S.pageSize);
-  if(p<1||p>pages) return;
-  S.currentPage = p; renderTableBody(S.currentCat.headers, document.getElementById('search-input').value);
-  document.getElementById('table-wrap').scrollTop = 0;
-}
+function goPage(p){ const pages = Math.ceil(S.filteredRows.length/S.pageSize); if(p<1||p>pages) return; S.currentPage = p; renderTableBody(S.currentCat.headers, document.getElementById('search-input').value); document.getElementById('table-wrap').scrollTop = 0; }
+function sortTable(ci){ if(S.sortCol === ci) S.sortDir = S.sortDir==='asc'?'desc':'asc'; else { S.sortCol = ci; S.sortDir = 'asc'; } applyFilters(); }
 
-function sortTable(ci){
-  if(S.sortCol === ci) S.sortDir = S.sortDir==='asc'?'desc':'asc';
-  else { S.sortCol = ci; S.sortDir = 'asc'; }
-  applyFilters();
-}
-
-// =============================================
-// FORM
-// =============================================
 function buildForm(headers, rowArr){
   document.getElementById('modal-form').innerHTML = headers.map((h,i)=>{
     const val = rowArr && rowArr[i] !== undefined ? String(rowArr[i]) : '';
@@ -833,9 +889,6 @@ function keyDD(e,idx){
   else if(e.key==='Escape') closeAllDD();
 }
 
-// =============================================
-// MODAL — EDIT/ADD
-// =============================================
 function openEditModal(itemId){
   const cat = S.currentCat || S.categories.find(c => (S.allItems[c.id]||[]).some(it => it.id === itemId));
   if(!cat) return;
@@ -851,7 +904,7 @@ function openEditModal(itemId){
 function openAddModal(){
   if(!S.currentCat) return;
   S.editItemId = null;
-  document.getElementById('modal-title').innerHTML = '<i class="fas fa-plus-circle" style="color:var(--success)"></i> เพิ่มรายการใหม่';
+  document.getElementById('modal-title').innerHTML = `<i class="fas fa-plus-circle" style="color:var(--success)"></i> เพิ่มเครื่องมือใหม่ <span style="font-size:12px;color:var(--text-muted);font-weight:400">— ${escHtml(S.currentCat.name)}</span>`;
   buildForm(S.currentCat.headers, null);
   document.getElementById('modal-overlay').classList.add('show');
 }
@@ -863,8 +916,7 @@ async function saveRow(){
   const headers = cat.headers || [];
   const arr = headers.map((_,i)=> document.getElementById('f'+i).value);
   const obj = arrToObj(arr, headers);
-  const sk = headers.findIndex(isStatusCol);
-  const dk = headers.findIndex(isDeptCol);
+  const sk = headers.findIndex(isStatusCol), dk = headers.findIndex(isDeptCol);
   const status = sk>=0 ? normalizeStatus(arr[sk]) : null;
   const dept = dk>=0 ? String(arr[dk]||'').trim() || null : null;
 
@@ -879,7 +931,7 @@ async function saveRow(){
       const nextRow = items.length ? Math.max(...items.map(i=>i.row_index||0))+1 : 0;
       const { error } = await sb.from('items').insert({ category_id: cat.id, data: obj, status, department: dept, row_index: nextRow });
       if(error) throw error;
-      toast('เพิ่มรายการสำเร็จ','success');
+      toast('เพิ่มเครื่องมือใหม่สำเร็จ','success');
     }
     closeModal();
     await invalidate();
@@ -893,8 +945,7 @@ function openDelModal(itemId){
   const cat = S.currentCat || S.categories.find(c => (S.allItems[c.id]||[]).some(it => it.id === itemId));
   const item = cat ? (S.allItems[cat.id]||[]).find(it=>it.id===itemId) : null;
   if(!item || !cat) return;
-  S.delItemId = itemId;
-  S._delCatId = cat.id;
+  S.delItemId = itemId; S._delCatId = cat.id;
   const firstKey = (cat.headers && cat.headers[0]) || '';
   document.getElementById('del-info').innerHTML = `<strong>${escHtml(firstKey)}:</strong> ${escHtml(String(item.data?.[firstKey]||'-'))}`;
   document.getElementById('del-overlay').classList.add('show');
@@ -906,24 +957,124 @@ async function confirmDelete(){
   try {
     const { error } = await sb.from('items').delete().eq('id', S.delItemId);
     if(error) throw error;
-    closeDelModal();
-    toast('ลบสำเร็จ','success');
+    closeDelModal(); toast('ลบสำเร็จ','success');
     await invalidate();
-  } catch(e){
-    toast('ผิดพลาด: '+e.message,'error');
-  } finally { showLoading(false); }
+  } catch(e){ toast('ผิดพลาด: '+e.message,'error'); }
+  finally { showLoading(false); }
 }
 
 async function invalidate(){
   if(S.currentCat){ delete S.allItems[S.currentCat.id]; }
   S.dashStats = null;
-  if(S.currentCat) await loadCategoryItems(S.currentCat);
-  else await loadDashboard();
+  // refresh categories list (เผื่อมีการสร้าง category ใหม่)
+  const { data } = await sb.from('categories').select('*').order('display_order').order('name');
+  S.categories = data || [];
+  buildSidebarNav();
+  if(S.currentCat){
+    const fresh = S.categories.find(c=>c.id===S.currentCat.id);
+    if(fresh){ S.currentCat = fresh; await loadCategoryItems(fresh); }
+    else await showDashboard();
+  } else {
+    await loadDashboard();
+  }
 }
 
-// =============================================
+// ========================================================
+// CATEGORY PICKER (เพิ่มเครื่องมือใหม่จาก Dashboard)
+// ========================================================
+function openCategoryPicker(){
+  S.pickerSelectedId = null;
+  document.getElementById('picker-search-input').value = '';
+  renderPickerList('');
+  updatePickerConfirmBtn();
+  document.getElementById('picker-overlay').classList.add('show');
+}
+function closeCategoryPicker(){ document.getElementById('picker-overlay').classList.remove('show'); }
+
+function renderPickerList(query){
+  const list = document.getElementById('picker-list');
+  const counts = {};
+  if(S.dashStats && S.dashStats.sheetStats){
+    S.dashStats.sheetStats.forEach(s => { counts[s.id] = s.count; });
+  }
+  const q = (query||'').toLowerCase();
+  const filtered = S.categories.filter(c => !q || c.name.toLowerCase().includes(q));
+  if(!filtered.length){
+    list.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--text-muted);font-size:13px"><i class="fas fa-search" style="font-size:24px;opacity:.4;display:block;margin-bottom:8px"></i>ไม่พบประเภทพัสดุ</div>';
+    return;
+  }
+  list.innerHTML = filtered.map(c => {
+    const cnt = counts[c.id] !== undefined ? counts[c.id] : '...';
+    const isSel = S.pickerSelectedId === c.id ? 'selected' : '';
+    return `<label class="picker-item ${isSel}" onclick="selectPicker(${c.id})">
+      <div class="pi-icon"><i class="fas fa-table"></i></div>
+      <div class="pi-name" title="${escHtml(c.name)}">${escHtml(c.name)}</div>
+      <div class="pi-count">${cnt}</div>
+    </label>`;
+  }).join('');
+}
+function filterPicker(){ renderPickerList(document.getElementById('picker-search-input').value); }
+function selectPicker(catId){
+  S.pickerSelectedId = catId;
+  renderPickerList(document.getElementById('picker-search-input').value);
+  updatePickerConfirmBtn();
+}
+function updatePickerConfirmBtn(){
+  const btn = document.getElementById('picker-confirm-btn');
+  if(S.pickerSelectedId){ btn.disabled = false; btn.style.opacity = '1'; }
+  else { btn.disabled = true; btn.style.opacity = '.5'; }
+}
+function confirmCategoryPicker(){
+  if(!S.pickerSelectedId) return;
+  const cat = S.categories.find(c => c.id === S.pickerSelectedId);
+  if(!cat){ toast('ไม่พบประเภทที่เลือก','error'); return; }
+  S.currentCat = cat;
+  closeCategoryPicker();
+  openAddModal();
+}
+
+// ========================================================
+// CREATE NEW CATEGORY
+// ========================================================
+function openCreateCategory(){
+  document.getElementById('newcat-name').value = '';
+  document.getElementById('newcat-cols').value = 'ลำดับ|รายการ|รุ่น|S/N|จำนวน|หน่วยนับ|สถานะ|ใช้ที่แผนก|หมายเหตุ';
+  document.getElementById('newcat-overlay').classList.add('show');
+}
+function closeCreateCategory(){ document.getElementById('newcat-overlay').classList.remove('show'); }
+
+async function confirmCreateCategory(){
+  const name = document.getElementById('newcat-name').value.trim();
+  const colsRaw = document.getElementById('newcat-cols').value.trim();
+  if(!name){ toast('กรุณากรอกชื่อประเภทพัสดุ','error'); return; }
+  if(!colsRaw){ toast('กรุณากรอกคอลัมน์','error'); return; }
+  const headers = colsRaw.split('|').map(s=>s.trim()).filter(Boolean);
+  if(!headers.length){ toast('คอลัมน์ไม่ถูกต้อง','error'); return; }
+  showLoading(true);
+  try {
+    const { data, error } = await sb.from('categories').insert({
+      name, headers, display_order: S.categories.length
+    }).select().single();
+    if(error) throw error;
+    toast(`สร้างประเภท "${name}" สำเร็จ`,'success');
+    closeCreateCategory();
+    closeCategoryPicker();
+    // refresh & open add modal directly for the new cat
+    const { data: newList } = await sb.from('categories').select('*').order('display_order').order('name');
+    S.categories = newList || [];
+    buildSidebarNav();
+    S.dashStats = null;
+    const fresh = S.categories.find(c => c.id === data.id);
+    if(fresh){ S.currentCat = fresh; openAddModal(); }
+  } catch(e){
+    if(e.message && e.message.includes('duplicate')) toast('ชื่อประเภทนี้มีอยู่แล้ว','error');
+    else toast('สร้างไม่สำเร็จ: '+e.message,'error');
+  } finally { showLoading(false); }
+}
+
+// ========================================================
 // EXPORT
-// =============================================
+// ========================================================
 function exportData(type){
   const cat = S.currentCat; if(!cat) return;
   const headers = cat.headers || [];
@@ -946,15 +1097,15 @@ function exportData(type){
 }
 function dlBlob(blob, fn){ const u = URL.createObjectURL(blob), a = document.createElement('a'); a.href = u; a.download = fn; a.click(); setTimeout(()=>URL.revokeObjectURL(u), 1000); }
 
-// =============================================
-// REFRESH / UTIL
-// =============================================
 async function refreshData(){
   S.allItems = {}; S.dashStats = null;
+  const { data } = await sb.from('categories').select('*').order('display_order').order('name');
+  S.categories = data || []; buildSidebarNav();
   toast('รีเฟรชแล้ว','success');
-  if(S.currentCat) await loadCategoryItems(S.currentCat);
+  if(S.currentCat){ const fresh = S.categories.find(c=>c.id===S.currentCat.id); if(fresh){ S.currentCat=fresh; await loadCategoryItems(fresh); } else await showDashboard(); }
   else await loadDashboard();
 }
+
 function showLoading(v){ document.getElementById('loading').style.display = v ? 'flex' : 'none'; }
 function toast(msg, type=''){
   const el=document.createElement('div'); el.className='toast '+type;
@@ -966,57 +1117,31 @@ function toast(msg, type=''){
 function esc(s){ return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
 function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-// =============================================
-// CREATE CATEGORY (manual)
-// =============================================
-async function createCategoryPrompt(){
-  const name = prompt('ชื่อประเภทพัสดุ (sheet ใหม่):');
-  if(!name||!name.trim()) return;
-  const cols = prompt('คอลัมน์ทั้งหมด คั่นด้วย | (เช่น: ลำดับ|รายการ|รุ่น|จำนวน|สถานะ|ใช้ที่แผนก)', 'ลำดับ|รายการ|รุ่น|S/N|จำนวน|หน่วยนับ|สถานะ|ใช้ที่แผนก');
-  if(!cols||!cols.trim()) return;
-  const headers = cols.split('|').map(s=>s.trim()).filter(Boolean);
-  showLoading(true);
-  try {
-    const { error } = await sb.from('categories').insert({ name: name.trim(), headers, display_order: S.categories.length });
-    if(error) throw error;
-    toast('สร้าง "'+name+'" สำเร็จ','success');
-    await init();
-  } catch(e){ toast('สร้างไม่สำเร็จ: '+e.message,'error'); }
-  finally { showLoading(false); }
-}
-
-// =============================================
+// ========================================================
 // STATUS DRILL-DOWN MODAL
-// =============================================
+// ========================================================
 let smState={statusFilter:'',color:'#2563eb',smPage:1,smPS:50,smRows:[]};
 
 async function ensureAllItemsLoaded(){
   const missing = S.categories.filter(c => !S.allItems[c.id]);
   if(!missing.length) return;
   await Promise.all(missing.map(async cat => {
-    try {
-      const { data } = await sb.from('items').select('*').eq('category_id', cat.id).order('row_index').order('id');
-      S.allItems[cat.id] = data || [];
-    } catch(e){ S.allItems[cat.id] = []; }
+    try { const { data } = await sb.from('items').select('*').eq('category_id', cat.id).order('row_index').order('id'); S.allItems[cat.id] = data || []; }
+    catch(e){ S.allItems[cat.id] = []; }
   }));
 }
 
 async function openStatusModal(statusLabel, color){
-  smState.statusFilter = statusLabel;
-  smState.color = color || '#2563eb';
-  smState.smPage = 1;
+  smState.statusFilter = statusLabel; smState.color = color || '#2563eb'; smState.smPage = 1;
   document.getElementById('sm-search-input').value = '';
   const badge = document.getElementById('sm-badge');
-  badge.textContent = statusLabel;
-  badge.style.background = color+'22';
-  badge.style.color = color;
+  badge.textContent = statusLabel; badge.style.background = color+'22'; badge.style.color = color;
   document.getElementById('sm-title').textContent = 'รายการพัสดุสถานะ: '+statusLabel;
   document.getElementById('sm-count').textContent = '...';
   document.getElementById('sm-subtitle').textContent = 'กำลังโหลด...';
   document.getElementById('status-overlay').classList.add('show');
   await ensureAllItemsLoaded();
-  collectSmRows(statusLabel);
-  renderSmTable();
+  collectSmRows(statusLabel); renderSmTable();
 }
 
 function collectSmRows(statusLabel){
@@ -1028,9 +1153,7 @@ function collectSmRows(statusLabel){
     items.forEach(it => {
       let sv = sk >= 0 ? normalizeStatus(it.data?.[headers[sk]]) : '';
       if(!sv) sv = 'ไม่ระบุสถานะ';
-      if(sv === statusLabel){
-        smState.smRows.push({ item: it, sheetName: cat.name, headers, catId: cat.id });
-      }
+      if(sv === statusLabel){ smState.smRows.push({ item: it, sheetName: cat.name, headers, catId: cat.id }); }
     });
   });
 }
@@ -1099,15 +1222,10 @@ function renderSmTable(){
 }
 
 function smEdit(catId, itemId){
-  const cat = S.categories.find(c => c.id === catId);
-  if(!cat) return;
+  const cat = S.categories.find(c => c.id === catId); if(!cat) return;
   S.currentCat = cat;
   const sf = smState.statusFilter, sc = smState.color;
-  S._smReopen = ()=>{
-    if(sf === '__NO_STATUS__') openNoStatusModal();
-    else if(sf === '__ALL_SHEETS__') openSheetListModal();
-    else openStatusModal(sf, sc);
-  };
+  S._smReopen = ()=>{ if(sf === '__NO_STATUS__') openNoStatusModal(); else if(sf === '__ALL_SHEETS__') openSheetListModal(); else openStatusModal(sf, sc); };
   openEditModal(itemId);
 }
 
@@ -1160,13 +1278,9 @@ async function openMultiStatusModal(statusList, label, color){
   await ensureAllItemsLoaded();
   smState.smRows=[];
   S.categories.forEach(cat=>{
-    const items = S.allItems[cat.id]||[];
-    const headers = cat.headers||[];
+    const items = S.allItems[cat.id]||[]; const headers = cat.headers||[];
     const sk = headers.findIndex(isStatusCol);
-    items.forEach(it=>{
-      const sv = sk>=0 ? normalizeStatus(it.data?.[headers[sk]]) : '';
-      if(statusList.includes(sv)) smState.smRows.push({ item: it, sheetName: cat.name, headers, catId: cat.id });
-    });
+    items.forEach(it=>{ const sv = sk>=0 ? normalizeStatus(it.data?.[headers[sk]]) : ''; if(statusList.includes(sv)) smState.smRows.push({ item: it, sheetName: cat.name, headers, catId: cat.id }); });
   });
   renderSmTable();
 }
@@ -1188,32 +1302,13 @@ async function openNoStatusModal(){
   renderSmTable();
 }
 
-// =============================================
-// SEARCH MODE
-// =============================================
-function setSearchMode(mode){
-  S.searchMode = mode;
-  document.querySelectorAll('.search-mode-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('mode-'+mode).classList.add('active');
-  applyFilters();
-}
-function matchSearch(cellVal, q){
-  if(!q) return true;
-  switch(S.searchMode){
-    case 'startswith': return cellVal.startsWith(q);
-    case 'exact':      return cellVal===q;
-    default:           return cellVal.includes(q);
-  }
-}
+function setSearchMode(mode){ S.searchMode = mode; document.querySelectorAll('.search-mode-btn').forEach(b=>b.classList.remove('active')); document.getElementById('mode-'+mode).classList.add('active'); applyFilters(); }
+function matchSearch(cellVal, q){ if(!q) return true; switch(S.searchMode){ case 'startswith': return cellVal.startsWith(q); case 'exact': return cellVal===q; default: return cellVal.includes(q); } }
 function highlightMatch(val, q, mode){
   if(!q||!val) return escHtml(val);
   const lv=val.toLowerCase(), lq=q.toLowerCase();
   let idx=-1;
-  switch(mode){
-    case 'startswith': idx=lv.startsWith(lq)?0:-1; break;
-    case 'exact':      idx=lv===lq?0:-1; break;
-    default:           idx=lv.indexOf(lq);
-  }
+  switch(mode){ case 'startswith': idx=lv.startsWith(lq)?0:-1; break; case 'exact': idx=lv===lq?0:-1; break; default: idx=lv.indexOf(lq); }
   if(idx<0) return escHtml(val);
   return `${escHtml(val.substring(0,idx))}<mark class="search-highlight">${escHtml(val.substring(idx,idx+q.length))}</mark>${escHtml(val.substring(idx+q.length))}`;
 }
