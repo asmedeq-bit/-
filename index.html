@@ -49,7 +49,6 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);fon
 .btn-ghost{background:transparent;color:var(--text-muted);border:1.5px solid var(--border)}.btn-ghost:hover{background:var(--bg);color:var(--text)}
 .btn-sm{padding:5px 11px;font-size:12px;border-radius:6px}.btn-icon{padding:7px;min-width:auto}
 
-/* Quick-add card บน Dashboard */
 .quick-actions{
   background:linear-gradient(135deg,#10b981 0%,#059669 100%);
   border-radius:var(--radius);padding:18px 22px;margin-bottom:18px;
@@ -218,14 +217,12 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
 .empty-state h3{font-size:18px;color:var(--text);margin-bottom:8px;font-weight:700}
 .empty-state p{font-size:13px;line-height:1.6;max-width:480px;margin:0 auto 16px}
 
-/* Picker modal */
 .picker-radio-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;max-height:400px;overflow-y:auto;padding:4px}
 .picker-radio-list::-webkit-scrollbar{width:5px}.picker-radio-list::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
 .picker-item{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;cursor:pointer;transition:all .15s;background:var(--bg)}
 .picker-item:hover{border-color:var(--primary);background:var(--primary-light)}
 .picker-item.selected{border-color:var(--primary);background:var(--primary);color:#fff;box-shadow:0 4px 12px rgba(26,86,219,.25)}
 .picker-item.selected .pi-count{background:rgba(255,255,255,.25);color:#fff}
-.picker-item input{display:none}
 .pi-icon{width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
 .picker-item.selected .pi-icon{background:rgba(255,255,255,.25);color:#fff}
 .pi-name{flex:1;font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -236,6 +233,27 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
 .picker-divider span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--card);padding:0 12px;font-size:11px;color:var(--text-muted)}
 .new-cat-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;width:100%;border:1.5px dashed var(--border);background:transparent;border-radius:10px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-muted);transition:all .15s}
 .new-cat-btn:hover{border-color:var(--success);color:var(--success);background:#ecfdf5}
+
+/* คอลัมน์แบบ grid 2-column เหมือนฟอร์ม "เพิ่มเครื่องมือใหม่" */
+.col-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-height:380px;overflow-y:auto;padding:4px 4px 4px 0}
+.col-grid::-webkit-scrollbar{width:5px}.col-grid::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+.col-cell{display:flex;flex-direction:column;gap:6px;position:relative}
+.col-cell-label{font-size:12px;font-weight:600;color:var(--text-muted);display:flex;align-items:center;justify-content:space-between;gap:5px}
+.col-cell-label-left{display:flex;align-items:center;gap:6px}
+.col-cell-num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:700;flex-shrink:0}
+.col-cell-tag{font-size:10px;padding:1px 7px;border-radius:10px;font-weight:600;white-space:nowrap;display:inline-flex;align-items:center;gap:3px}
+.col-cell-tag.tag-status{background:#dcfce7;color:#15803d}
+.col-cell-tag.tag-dept{background:#e0e7ff;color:#4338ca}
+.col-cell-tag.tag-dropdown{background:var(--primary-light);color:var(--primary)}
+.col-cell-tag.tag-date{background:#fef3c7;color:#92400e}
+.col-cell-tag.tag-number{background:#fce7f3;color:#be185d}
+.col-cell-tag.tag-text{background:#f1f5f9;color:#64748b}
+.col-cell-input{width:100%;padding:9px 36px 9px 12px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:13px;color:var(--text);outline:none;transition:border .2s;background:var(--bg)}
+.col-cell-input:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px rgba(26,86,219,.08)}
+.col-cell-del{position:absolute;right:8px;top:50%;transform:translateY(2px);width:24px;height:24px;border-radius:6px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;font-size:11px}
+.col-cell-del:hover{background:#fee2e2;color:var(--danger)}
+.add-col-btn{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:11px;border:1.5px dashed var(--border);background:transparent;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-muted);transition:all .15s;margin-top:14px}
+.add-col-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
 </style>
 </head>
 <body>
@@ -280,7 +298,6 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
 
     <div id="content">
       <div id="view-dashboard">
-        <!-- Quick action: เพิ่มเครื่องมือใหม่ -->
         <div class="quick-actions">
           <div class="qa-icon"><i class="fas fa-plus-circle"></i></div>
           <div class="qa-text">
@@ -369,7 +386,6 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
   </div>
 </div>
 
-<!-- Category picker modal -->
 <div class="modal-overlay" id="picker-overlay">
   <div class="modal" style="max-width:680px">
     <div class="modal-header">
@@ -394,7 +410,6 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
   </div>
 </div>
 
-<!-- Create category modal -->
 <div class="modal-overlay" id="newcat-overlay">
   <div class="modal" style="max-width:600px">
     <div class="modal-header">
@@ -407,10 +422,11 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
         <input type="text" class="plain-input" id="newcat-name" placeholder="เช่น เครื่องช่วยหายใจ, เครื่องดูดเสมหะ">
       </div>
       <div class="form-group full">
-        <label class="form-label">คอลัมน์ทั้งหมด (คั่นด้วย <code>|</code>) <span style="color:var(--danger)">*</span></label>
-        <textarea class="plain-input" id="newcat-cols" rows="3" placeholder="ลำดับ|รายการ|รุ่น|S/N|จำนวน|หน่วยนับ|สถานะ|ใช้ที่แผนก">ลำดับ|รายการ|รุ่น|S/N|จำนวน|หน่วยนับ|สถานะ|ใช้ที่แผนก|หมายเหตุ</textarea>
-        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;line-height:1.5">
-          แนะนำให้มี: <strong>ลำดับ</strong>, <strong>รายการ</strong> (ชื่อเครื่อง), <strong>สถานะ</strong> (สำหรับ filter), <strong>ใช้ที่แผนก</strong>
+        <label class="form-label">คอลัมน์ทั้งหมด <span style="color:var(--danger)">*</span> <span style="font-size:10px;color:var(--text-muted);font-weight:400;margin-left:4px">(เพิ่ม/ลบได้ตามต้องการ)</span></label>
+        <div class="col-grid" id="newcat-cols-table"></div>
+        <button class="add-col-btn" onclick="addColumnRow('')"><i class="fas fa-plus"></i> เพิ่มคอลัมน์</button>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:8px;line-height:1.5">
+          แนะนำให้มี: <strong>ลำดับ</strong>, <strong>รายการ</strong> (ชื่อเครื่อง), <strong>สถานะ</strong> (สำหรับ filter), <strong>ใช้ที่แผนก</strong> (สำหรับ filter)
         </div>
       </div>
     </div>
@@ -421,7 +437,6 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
   </div>
 </div>
 
-<!-- Status drill-down modal -->
 <div id="status-overlay">
   <div id="status-modal">
     <div class="sm-header">
@@ -456,7 +471,6 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
   </div>
 </div>
 
-<!-- Edit/Add modal -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal">
     <div class="modal-header">
@@ -471,7 +485,6 @@ tbody td{padding:9px 14px;color:var(--text);max-width:220px;overflow:hidden;text
   </div>
 </div>
 
-<!-- Delete modal -->
 <div class="modal-overlay" id="del-overlay">
   <div class="modal" style="max-width:420px">
     <div class="modal-header">
@@ -504,9 +517,9 @@ const S = {
 };
 
 const COLORS = ['#2563eb','#10b981','#f59e0b','#ef4444','#8b5cf6','#06b6d4','#f97316','#ec4899','#14b8a6','#6366f1','#84cc16','#a855f7'];
-const DATE_FIELDS = ['รับมาวันที่','วันหมดอายุ','วันเดือนปีที่ได้มา'];
-const NUM_FIELDS = ['ราคาต่อหน่วย','มูลค่าการได้มา','อายุใช้งานที่กำหนด(ปี )'];
-const TEXT_ONLY_FIELDS = ['NVH.No.','INH.No.','NVH. No','ปีงบประมาณ','ปี งป.','อายุใช้งานคงเหลือ(ปี / เดือน)'];
+const DATE_FIELDS = ['รับมาวันที่','วันหมดอายุ','วันเดือนปีที่ได้มา','วันเดือนปี ที่ได้มา'];
+const NUM_FIELDS = ['ราคาต่อหน่วย','มูลค่าการได้มา','อายุใช้งานที่กำหนด(ปี )','อายุใช้งานที่กำหนด (ปี)','อายุใช้งานที่กำหนด(ปี)'];
+const TEXT_ONLY_FIELDS = ['NVH.No.','INH.No.','NVH. No','ปีงบประมาณ','ปี งป.','อายุใช้งานคงเหลือ(ปี / เดือน)','อายุใช้งาน คงเหลือ (ปี/เดือน)','หมายเลขทะเบียนครุภัณฑ์','หมายเลขรหัสสินทรัพย์ (1)','หมายเลขรหัสสินทรัพย์ (2)','รหัสประเภทสินทรัพย์','รหัสศูนย์ ต้นทุน','รหัสจังหวัด','SN','เลขที่ DTO'];
 
 const STATIC_DROPDOWNS = {
   'สถานะภาพพัสดุ': ['ใช้ราชการได้','รอจำหน่ายรอใบ decom','ทำเรื่องจำหน่ายใหม่รอใบ decom','ระหว่างทำเรื่องจำหน่าย','จำหน่ายแล้ว','จำหน่าย','ชำรุด','รอจำหน่าย','S'],
@@ -560,11 +573,7 @@ function buildSidebarNav(){
 }
 function setActiveNav(id){ document.querySelectorAll('.nav-item').forEach(el=>el.classList.remove('active')); const el=document.getElementById(id); if(el)el.classList.add('active'); }
 
-// Topbar add button — เลือก behavior ตาม view
-function topbarAdd(){
-  if(S.currentCat) openAddModal();
-  else openCategoryPicker();
-}
+function topbarAdd(){ if(S.currentCat) openAddModal(); else openCategoryPicker(); }
 
 async function showDashboard(){
   document.getElementById('view-dashboard').style.display='';
@@ -683,14 +692,10 @@ function renderDonut(sm){
     </div>`).join('');
 }
 
-function showCategoryById(catId){
-  const idx = S.categories.findIndex(c => c.id === catId);
-  if(idx >= 0) showCategory(catId, idx);
-}
+function showCategoryById(catId){ const idx = S.categories.findIndex(c => c.id === catId); if(idx >= 0) showCategory(catId, idx); }
 
 async function showCategory(catId, navIdx){
-  const cat = S.categories.find(c => c.id === catId);
-  if(!cat) return;
+  const cat = S.categories.find(c => c.id === catId); if(!cat) return;
   S.currentCat = cat; S.currentNavIdx = navIdx;
   document.getElementById('view-dashboard').style.display='none';
   document.getElementById('view-table').style.display='';
@@ -698,8 +703,7 @@ async function showCategory(catId, navIdx){
   document.getElementById('page-subtitle').textContent = 'รายการพัสดุ: ' + cat.name;
   document.getElementById('table-title').textContent = cat.name;
   setActiveNav('nav-sheet-' + navIdx);
-  if(S.allItems[catId]) renderTable(cat);
-  else await loadCategoryItems(cat);
+  if(S.allItems[catId]) renderTable(cat); else await loadCategoryItems(cat);
 }
 
 async function loadCategoryItems(cat){
@@ -708,20 +712,15 @@ async function loadCategoryItems(cat){
     const { data, error } = await sb.from('items').select('*').eq('category_id', cat.id).order('row_index').order('id');
     if(error) throw error;
     S.allItems[cat.id] = data || [];
-    showLoading(false);
-    renderTable(cat);
-  } catch(e){
-    showLoading(false);
-    toast('โหลดข้อมูลไม่สำเร็จ: '+e.message,'error');
-  }
+    showLoading(false); renderTable(cat);
+  } catch(e){ showLoading(false); toast('โหลดข้อมูลไม่สำเร็จ: '+e.message,'error'); }
 }
 
 function renderTable(cat){
   const headers = cat.headers || [];
   if(!headers.length){
     document.getElementById('table-body').innerHTML = '<tr><td colspan="999" style="text-align:center;padding:40px;color:var(--text-muted)">ยังไม่ได้ตั้งค่าคอลัมน์ของประเภทนี้</td></tr>';
-    document.getElementById('table-head').innerHTML = '';
-    return;
+    document.getElementById('table-head').innerHTML = ''; return;
   }
   S.currentPage = 1; S.sortCol = null;
   buildFilters(cat); applyFilters();
@@ -936,9 +935,8 @@ async function saveRow(){
     closeModal();
     await invalidate();
     if(S._smReopen){ const fn = S._smReopen; S._smReopen = null; setTimeout(fn, 250); }
-  } catch(e){
-    toast('ผิดพลาด: '+e.message,'error');
-  } finally { showLoading(false); }
+  } catch(e){ toast('ผิดพลาด: '+e.message,'error'); }
+  finally { showLoading(false); }
 }
 
 function openDelModal(itemId){
@@ -966,7 +964,6 @@ async function confirmDelete(){
 async function invalidate(){
   if(S.currentCat){ delete S.allItems[S.currentCat.id]; }
   S.dashStats = null;
-  // refresh categories list (เผื่อมีการสร้าง category ใหม่)
   const { data } = await sb.from('categories').select('*').order('display_order').order('name');
   S.categories = data || [];
   buildSidebarNav();
@@ -979,14 +976,10 @@ async function invalidate(){
   }
 }
 
-// ========================================================
-// CATEGORY PICKER (เพิ่มเครื่องมือใหม่จาก Dashboard)
-// ========================================================
 function openCategoryPicker(){
   S.pickerSelectedId = null;
   document.getElementById('picker-search-input').value = '';
-  renderPickerList('');
-  updatePickerConfirmBtn();
+  renderPickerList(''); updatePickerConfirmBtn();
   document.getElementById('picker-overlay').classList.add('show');
 }
 function closeCategoryPicker(){ document.getElementById('picker-overlay').classList.remove('show'); }
@@ -994,9 +987,7 @@ function closeCategoryPicker(){ document.getElementById('picker-overlay').classL
 function renderPickerList(query){
   const list = document.getElementById('picker-list');
   const counts = {};
-  if(S.dashStats && S.dashStats.sheetStats){
-    S.dashStats.sheetStats.forEach(s => { counts[s.id] = s.count; });
-  }
+  if(S.dashStats && S.dashStats.sheetStats){ S.dashStats.sheetStats.forEach(s => { counts[s.id] = s.count; }); }
   const q = (query||'').toLowerCase();
   const filtered = S.categories.filter(c => !q || c.name.toLowerCase().includes(q));
   if(!filtered.length){
@@ -1014,11 +1005,7 @@ function renderPickerList(query){
   }).join('');
 }
 function filterPicker(){ renderPickerList(document.getElementById('picker-search-input').value); }
-function selectPicker(catId){
-  S.pickerSelectedId = catId;
-  renderPickerList(document.getElementById('picker-search-input').value);
-  updatePickerConfirmBtn();
-}
+function selectPicker(catId){ S.pickerSelectedId = catId; renderPickerList(document.getElementById('picker-search-input').value); updatePickerConfirmBtn(); }
 function updatePickerConfirmBtn(){
   const btn = document.getElementById('picker-confirm-btn');
   if(S.pickerSelectedId){ btn.disabled = false; btn.style.opacity = '1'; }
@@ -1028,41 +1015,153 @@ function confirmCategoryPicker(){
   if(!S.pickerSelectedId) return;
   const cat = S.categories.find(c => c.id === S.pickerSelectedId);
   if(!cat){ toast('ไม่พบประเภทที่เลือก','error'); return; }
-  S.currentCat = cat;
-  closeCategoryPicker();
-  openAddModal();
+  S.currentCat = cat; closeCategoryPicker(); openAddModal();
 }
 
-// ========================================================
-// CREATE NEW CATEGORY
-// ========================================================
+let newCatCols = [];
+
 function openCreateCategory(){
   document.getElementById('newcat-name').value = '';
-  document.getElementById('newcat-cols').value = 'ลำดับ|รายการ|รุ่น|S/N|จำนวน|หน่วยนับ|สถานะ|ใช้ที่แผนก|หมายเหตุ';
+  // คอลัมน์ default ตรงตามฟอร์ม "เพิ่มเครื่องมือใหม่" ของ sheet มาตรฐานในระบบ
+  newCatCols = [
+    'รหัสประเภทสินทรัพย์',
+    'หมายเลขทะเบียนครุภัณฑ์',
+    'NVH.No.',
+    'INH.No.',
+    'ใช้ที่แผนก',
+    'ยี่ห้อ',
+    'รุ่น',
+    'บริษัทผู้ขาย',
+    'เลขที่ DTO',
+    'SN',
+    'หมายเลขรหัสสินทรัพย์ (1)',
+    'หมายเลขรหัสสินทรัพย์ (2)',
+    'รายการลักษณะ/คุณสมบัติ ครุภัณฑ์',
+    'รหัสศูนย์ ต้นทุน',
+    'รหัสจังหวัด',
+    'ชื่องบประมาณ',
+    'มูลค่าการได้มา',
+    'หน่วยนับ',
+    'วันเดือนปี ที่ได้มา (ค.ศ.)',
+    'อายุใช้งานที่กำหนด (ปี)',
+    'อายุใช้งาน คงเหลือ (ปี/เดือน)',
+    'สถานะภาพพัสดุ'
+  ];
+  renderColRows();
   document.getElementById('newcat-overlay').classList.add('show');
+  setTimeout(()=>document.getElementById('newcat-name').focus(), 100);
 }
 function closeCreateCategory(){ document.getElementById('newcat-overlay').classList.remove('show'); }
 
+// ตรวจประเภทคอลัมน์ (ตรงกับ logic ใน buildForm ของหน้า "เพิ่มเครื่องมือใหม่")
+function detectColType(name){
+  const h = String(name||'').trim();
+  if(!h) return null;
+  // ใช้ logic เดียวกับฟอร์ม "เพิ่มเครื่องมือใหม่" เพื่อให้ตรงกัน
+  if(h === 'สถานะ' || h === 'สถานะภาพพัสดุ' || h.includes('สถานะภาพ') || h.includes('สถานะ'))
+    return { cls: 'tag-status', text: '≡ สถานะ', title: 'มี dropdown สถานะ + ใช้ filter ได้' };
+  if(h.includes('ใช้ที่แผนก'))
+    return { cls: 'tag-dept', text: '≡ แผนก', title: 'มี dropdown แผนก + ใช้ filter ได้' };
+  if(TEXT_ONLY_FIELDS.some(d => h === d.trim()))
+    return { cls: 'tag-text', text: '📝 ข้อความ', title: 'บังคับเป็น text (ไม่ตัดเลข 0 หน้า)' };
+  if(DATE_FIELDS.some(d => h.includes(d.trim())))
+    return { cls: 'tag-date', text: '📅 วันที่', title: 'จะแสดงเป็น date picker' };
+  if(NUM_FIELDS.some(d => h === d.trim()))
+    return { cls: 'tag-number', text: '🔢 ตัวเลข', title: 'จะแสดงเป็น number input' };
+  if(STATIC_DROPDOWNS[h])
+    return { cls: 'tag-dropdown', text: '≡ dropdown', title: 'มีตัวเลือกให้เลือก ('+STATIC_DROPDOWNS[h].length+' ตัวเลือก)' };
+  return null;
+}
+
+function renderColRows(){
+  const wrap = document.getElementById('newcat-cols-table');
+  if(!wrap) return;
+  if(!newCatCols.length){
+    wrap.innerHTML = `<div style="grid-column:1/-1;padding:24px;text-align:center;color:var(--text-muted);font-size:12px;border:1.5px dashed var(--border);border-radius:8px"><i class="fas fa-inbox" style="font-size:20px;display:block;margin-bottom:8px;opacity:.4"></i>ยังไม่มีคอลัมน์ — กดปุ่ม "เพิ่มคอลัมน์" ด้านล่าง</div>`;
+    return;
+  }
+  wrap.innerHTML = newCatCols.map((name, i) => {
+    const t = detectColType(name);
+    const tag = t ? `<span class="col-cell-tag ${t.cls}" title="${escHtml(t.title)}">${t.text}</span>` : '';
+    const labelText = name && name.trim() ? escHtml(name) : `คอลัมน์ที่ ${i+1}`;
+    return `<div class="col-cell">
+      <label class="col-cell-label">
+        <span class="col-cell-label-left">
+          <span class="col-cell-num">${i+1}</span>
+          <span id="nlbl${i}">${labelText}</span>
+          ${tag}
+        </span>
+      </label>
+      <input type="text" class="col-cell-input" id="ncol${i}" value="${escHtml(name)}"
+        placeholder="ชื่อคอลัมน์ (เช่น ลำดับ, รุ่น, ราคา, สถานะ)"
+        oninput="newCatCols[${i}]=this.value;updateColTag(${i})"
+        onkeydown="colKey(event,${i})">
+      <button class="col-cell-del" onclick="removeColumnRow(${i})" title="ลบคอลัมน์นี้"><i class="fas fa-times"></i></button>
+    </div>`;
+  }).join('');
+}
+
+function updateColTag(idx){
+  const cell = document.querySelectorAll('#newcat-cols-table .col-cell')[idx];
+  if(!cell) return;
+  const oldTag = cell.querySelector('.col-cell-tag');
+  if(oldTag) oldTag.remove();
+  const name = newCatCols[idx];
+  // อัปเดต label text ให้ตามชื่อคอลัมน์ที่พิมพ์ (เหมือน "เพิ่มเครื่องมือใหม่")
+  const lbl = document.getElementById('nlbl'+idx);
+  if(lbl) lbl.textContent = (name && name.trim()) ? name : `คอลัมน์ที่ ${idx+1}`;
+  // เพิ่ม tag ใหม่ถ้า detect ได้
+  const t = detectColType(name);
+  if(t){
+    const tag = document.createElement('span');
+    tag.className = 'col-cell-tag ' + t.cls;
+    tag.textContent = t.text;
+    tag.title = t.title;
+    cell.querySelector('.col-cell-label-left').appendChild(tag);
+  }
+}
+
+function addColumnRow(name){
+  newCatCols.push(name || '');
+  renderColRows();
+  setTimeout(()=>{ const inp = document.getElementById('ncol'+(newCatCols.length-1)); if(inp) inp.focus(); }, 50);
+}
+
+function removeColumnRow(idx){
+  newCatCols.splice(idx, 1);
+  renderColRows();
+}
+
+function colKey(e, idx){
+  if(e.key === 'Enter'){
+    e.preventDefault();
+    if(idx === newCatCols.length - 1) addColumnRow('');
+    else { const next = document.getElementById('ncol'+(idx+1)); if(next) next.focus(); }
+  } else if(e.key === 'Backspace' && !newCatCols[idx] && newCatCols.length > 1){
+    e.preventDefault();
+    removeColumnRow(idx);
+    setTimeout(()=>{ const p = document.getElementById('ncol'+Math.max(0, idx-1)); if(p) p.focus(); }, 30);
+  }
+}
+
 async function confirmCreateCategory(){
   const name = document.getElementById('newcat-name').value.trim();
-  const colsRaw = document.getElementById('newcat-cols').value.trim();
-  if(!name){ toast('กรุณากรอกชื่อประเภทพัสดุ','error'); return; }
-  if(!colsRaw){ toast('กรุณากรอกคอลัมน์','error'); return; }
-  const headers = colsRaw.split('|').map(s=>s.trim()).filter(Boolean);
-  if(!headers.length){ toast('คอลัมน์ไม่ถูกต้อง','error'); return; }
+  if(!name){ toast('กรุณากรอกชื่อประเภทพัสดุ','error'); document.getElementById('newcat-name').focus(); return; }
+  // sync จาก input ทุกช่อง (กันกรณี oninput ไม่ทัน)
+  newCatCols.forEach((_, i) => { const inp = document.getElementById('ncol'+i); if(inp) newCatCols[i] = inp.value; });
+  const headers = newCatCols.map(s => String(s||'').trim()).filter(Boolean);
+  if(!headers.length){ toast('กรุณาเพิ่มอย่างน้อย 1 คอลัมน์','error'); return; }
+  // เช็คชื่อซ้ำ
+  const dup = headers.filter((h,i) => headers.indexOf(h) !== i);
+  if(dup.length){ toast('ชื่อคอลัมน์ซ้ำ: '+dup[0],'error'); return; }
   showLoading(true);
   try {
-    const { data, error } = await sb.from('categories').insert({
-      name, headers, display_order: S.categories.length
-    }).select().single();
+    const { data, error } = await sb.from('categories').insert({ name, headers, display_order: S.categories.length }).select().single();
     if(error) throw error;
     toast(`สร้างประเภท "${name}" สำเร็จ`,'success');
-    closeCreateCategory();
-    closeCategoryPicker();
-    // refresh & open add modal directly for the new cat
+    closeCreateCategory(); closeCategoryPicker();
     const { data: newList } = await sb.from('categories').select('*').order('display_order').order('name');
-    S.categories = newList || [];
-    buildSidebarNav();
+    S.categories = newList || []; buildSidebarNav();
     S.dashStats = null;
     const fresh = S.categories.find(c => c.id === data.id);
     if(fresh){ S.currentCat = fresh; openAddModal(); }
@@ -1072,9 +1171,6 @@ async function confirmCreateCategory(){
   } finally { showLoading(false); }
 }
 
-// ========================================================
-// EXPORT
-// ========================================================
 function exportData(type){
   const cat = S.currentCat; if(!cat) return;
   const headers = cat.headers || [];
@@ -1117,9 +1213,6 @@ function toast(msg, type=''){
 function esc(s){ return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
 function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-// ========================================================
-// STATUS DRILL-DOWN MODAL
-// ========================================================
 let smState={statusFilter:'',color:'#2563eb',smPage:1,smPS:50,smRows:[]};
 
 async function ensureAllItemsLoaded(){
